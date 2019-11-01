@@ -33,38 +33,6 @@ public class Signup extends AppCompatActivity {
         Intent intent =new Intent(this, Signup2.class);
         startActivity(intent);
     }
-    public  String accCheck(String em,String pswd){
-        for (int i=0;i<AccountHandler.ACCOUNTS.size();i++){
-            if(AccountHandler.ACCOUNTS.get(i).email==em){
-                if(AccountHandler.ACCOUNTS.get(i).password==pswd){
-                    return "good";
-                }else{
-                    return "You have wrong password!";
-                }
-            }
-        }return "You account can't be found";
-    }
-    public void load(){
-        try {
-            AccountHandler.ACCOUNTS.clear();
-            AccountHandler.ACC_MAP.clear();
-            FileInputStream fileInputStream = openFileInput("account.txt");
-            InputStreamReader inputStreamReader=new InputStreamReader((fileInputStream));
-            BufferedReader bufferedReader=new BufferedReader((inputStreamReader));
-            String tt="";
-            while ((tt=bufferedReader.readLine())!=null){
 
-                AccountHandler.addItemElement(AccountHandler.createElement( split(tt)));
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public String[] split(String test){
-        String[] acct=new String[]{};
-        acct=test.split(",");
-        return acct;
-    }
+
 }
